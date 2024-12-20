@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-apt-get update
-apt-get install -y --no-install-recommends liblzma-dev
+sudo apt-get update
+sudo apt-get install -y --no-install-recommends liblzma-dev
