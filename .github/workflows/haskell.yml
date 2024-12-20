@@ -126,14 +126,14 @@ jobs:
       artifact: artifact-${{matrix.plan.name}}
     runs-on: ubuntu-latest
     steps:
-      - name: Install dependencies
-        run: bash ./ci/scripts/install-deps.sh
       - name: Fail when Corresponding Build didn't succeed
         if: ${{needs.build.result != 'success' }}
         run: echo "BUILD FAILED" >&2; exit 1
       - uses: actions/checkout@v3
         with:
           ref: ${{github.event.pull_request.head.sha || github.sha}}
+      - name: Install dependencies
+        run: bash ./ci/scripts/install-deps.sh
       - name: Download artifacts
         id: download
         uses: actions/download-artifact@v4
